@@ -51,37 +51,38 @@ set showmatch " 括弧の対応表示
 set noswapfile " swapfileを作らない
 imap <c-j> <esc>
 
+"---------------------------------------------------------
+" Start NeoBundle Settings.
+"---------------------------------------------------------
+" 初回起動時のみruntimepathにNeoBundleのパスを指定する
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-"if has('vim_starting')
-"	" 初回起動時のみruntimepathにNeoBundleのパスを指定する
-"	set runtimepath+=~/.vim/bundle/neobundle.vim/
-"
-"	" NeoBundleが未インストールであればgit cloneする・・・・・・①
-"	if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-"		echo "install NeoBundle..."
-"		:call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-"	endif
-"endif
-"
-"call
-"neobundle#begin(expand('~/.vim/bundle/'))
-"
-"
-"" インストールするVimプラグインを以下に記述
-"" NeoBundle自身を管理
-"NeoBundleFetch 'Shougo/neobundle.vim'
-""----------------------------------------------------------
-"" ここに追加したいVimプラグインを記述する・・・・・・②
-"
-"
-"
-"
-"
-""----------------------------------------------------------
-"call neobundle#end()
-"
-"" ファイルタイプ別のVimプラグイン/インデントを有効にする
-"filetype plugin indent on
-"" 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
-"
+" Required:
+call neobundle#begin(expand('/home/vagrant/.vim/bundle/'))
+
+" インストールするVimプラグインを以下に記述
+" NeoBundle自身を管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+"----------------------------------------------------------
+" ここに追加したいVimプラグインを記述する・・・・・・②
+
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'mattn/emmet-vim'
+
+
+
+
+"----------------------------------------------------------
+call neobundle#end()
+
+" Required:
+" ファイルタイプ別のVimプラグイン/インデントを有効にする
+filetype plugin indent on
+" 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
+
+"未インストールのプラグインがある場合、インストールするかどうかを尋ねる
 "NeoBundleCheck
+
+"----------------------------------------------------------
+"  End NeoBundle Settings.
+"----------------------------------------------------------
