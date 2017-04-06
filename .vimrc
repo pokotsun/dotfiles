@@ -49,7 +49,8 @@ set history=5000 " 保存するコマンド履歴の数
 " その他
 set showmatch " 括弧の対応表示
 set noswapfile " swapfileを作らない
-imap <c-j> <esc>
+" escをCtr-jに対応させる
+imap <c-j> <esc> 
 
 "---------------------------------------------------------
 " Start NeoBundle Settings.
