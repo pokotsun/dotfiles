@@ -1,14 +1,4 @@
 
-
-
-"色関係
-
-syntax on 
-" コメントの色を変える
-hi Comment ctermfg=LightBlue 
-colorscheme molokai
-set t_Co=256
-
 " エンコーディング
 
 set encoding=utf-8 
@@ -16,7 +6,7 @@ scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる問題を解決
+set ambiwidth=double "文字が崩れる問題を解決
 
 "タブ　インデント
 
@@ -37,9 +27,6 @@ nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
 " カーソル
 set number " 行番号表示
-" 表示行のみ色付け
-set cursorline
-hi clear CursorLine
 
 " コマンド補完
 
@@ -53,37 +40,47 @@ set noswapfile " swapfileを作らない
 imap <c-j> <esc> 
 
 "---------------------------------------------------------
-" Start NeoBundle Settings.
+" Start Dein Settings.
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein.vim
+
+call dein#begin(expand('~/.vim/dein.vim'))
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('vim-scripts/closetag.vim')
+call dein#add('Townk/vim-autoclose')
+
+
+call dein#end()
 "---------------------------------------------------------
-" 初回起動時のみruntimepathにNeoBundleのパスを指定する
-set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-" Required:
-call neobundle#begin(expand('/home/vagrant/.vim/bundle/'))
+"色関係
 
-" インストールするVimプラグインを以下に記述
-" NeoBundle自身を管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-"----------------------------------------------------------
-" ここに追加したいVimプラグインを記述する・・・・・・②
+syntax on 
+if !has('gui_running')
+  augroup seiya
+    autocmd!
+    autocmd VimEnter,ColorScheme * highlight Normal ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight LineNr ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight SignColumn ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight VertSplit ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight NonText ctermbg=none
+  augroup END
+endif
 
-NeoBundle 'Townk/vim-autoclose'
-NeoBundle 'mattn/emmet-vim'
+" コメントの色を変える
+colorscheme molokai
+hi Comment ctermfg=darkcyan
+set t_Co=256
 
+" 表示行のみ色付け
+set cursorline
+hi clear CursorLine
 
-
-
-"----------------------------------------------------------
-call neobundle#end()
-
-" Required:
-" ファイルタイプ別のVimプラグイン/インデントを有効にする
-filetype plugin indent on
-" 未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
-
-"未インストールのプラグインがある場合、インストールするかどうかを尋ねる
-"NeoBundleCheck
-
-"----------------------------------------------------------
-"  End NeoBundle Settings.
-"----------------------------------------------------------
