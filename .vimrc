@@ -8,15 +8,15 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コー�
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=double "文字が崩れる問題を解決
 
-"タブ　インデント
+"タブ インデント
 
-set tabstop=2 " タブステップ
+set tabstop=4 " タブステップ
 set expandtab " タブ入力を複数の空白入力に置き換える
-set expandtab " タブ入力を複数の空白入力に置き換える
-set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
-set shiftwidth=2 " smartindentで増減する幅
+set shiftwidth=4 " smartindentで増減する幅
+"filetype indent on
 
 
 " 文字列検索
@@ -32,6 +32,9 @@ set number " 行番号表示
 
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
+
+" htmlのとじタグ保管
+imap <C-/> <C-S-\>
 
 " その他
 set showmatch " 括弧の対応表示
@@ -56,7 +59,7 @@ call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('vim-scripts/closetag.vim')
 call dein#add('Townk/vim-autoclose')
-
+call dein#add('scrooloose/nerdtree')
 
 call dein#end()
 "---------------------------------------------------------
@@ -78,6 +81,7 @@ endif
 " コメントの色を変える
 colorscheme molokai
 hi Comment ctermfg=darkcyan
+hi Visual ctermfg=magenta
 set t_Co=256
 
 " 表示行のみ色付け
