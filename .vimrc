@@ -60,6 +60,7 @@ call dein#add('Shougo/neosnippet')
 call dein#add('vim-scripts/closetag.vim')
 call dein#add('Townk/vim-autoclose')
 call dein#add('scrooloose/nerdtree')
+call dein#add('ConradIrwin/vim-bracketed-paste')
 
 call dein#end()
 "---------------------------------------------------------
