@@ -61,7 +61,7 @@ function parse_git_branch {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\t\[\033[01;37m\]@\[\033[1;34m\]\u\[\033[01;37m\]:\[\033[01;35m\]\W\[\033[00;34m\]$(parse_git_branch)\[\033[00;37m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\t\[\033[01;37m\]@\[\033[1;34m\]\u\[\033[01;37m\]:\[\033[01;35m\]\W\[\033[00;32m\]$(parse_git_branch)\[\033[00;37m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u:\w\$ '
 fi
@@ -141,5 +141,8 @@ export SDKMAN_DIR="/home/pokotsun/.sdkman"
 
 # Goenvのパス通し
 export GOENV_ROOT="$HOME/.goenv"
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOBIN:$PATH"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
