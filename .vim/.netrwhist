@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/pokotsun/project/icasso'
-let g:netrw_dirhist_2='/home/pokotsun/Android'
-let g:netrw_dirhist_3='/home/pokotsun/.AndroidStudio2.3'
-let g:netrw_dirhist_4='/home/pokotsun/project'
-let g:netrw_dirhist_5='/home/pokotsun/project/booksearch'
-let g:netrw_dirhist_6='/home/pokotsun/project/icasso/node_modules'
-let g:netrw_dirhist_7='/home/pokotsun/project/icasso/node_modules/gulp'
-let g:netrw_dirhist_8='/home/pokotsun/project/icasso/node_modules/gulp/bin'
-let g:netrw_dirhist_9='/home/pokotsun/dotfiles'
+let g:netrw_dirhist_cnt =0
