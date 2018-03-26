@@ -62,6 +62,11 @@ call dein#add('Townk/vim-autoclose')
 call dein#add('scrooloose/nerdtree')
 call dein#add('ConradIrwin/vim-bracketed-paste')
 
+"python環境
+call dein#add('davidhalter/jedi-vim')
+
+call dein#add('mattn/emmet-vim')
+
 call dein#end()
 "---------------------------------------------------------
 
@@ -83,9 +88,14 @@ endif
 colorscheme molokai
 hi Comment ctermfg=darkcyan
 hi Visual ctermfg=magenta
+
+" カッコのハイライト時の色を変える
+hi MatchParen cterm=bold ctermfg=cyan ctermbg=blue
 set t_Co=256
 
 " 表示行のみ色付け
 set cursorline
 hi clear CursorLine
+
+"autocmd ColorScheme * highlight MatchParen gui=bold guibg=NONE guifg=blue
 
