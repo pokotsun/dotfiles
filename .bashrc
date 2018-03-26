@@ -153,3 +153,12 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 eval "$(pyenv virtualenv-init -)"
+
+# jenvのパス通し
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# scalaenvのパス通し
+export PATH="$HOME/.scalaenv/bin:$PATH"
+eval "$(scalaenv init -)"
+

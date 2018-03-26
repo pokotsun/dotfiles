@@ -61,6 +61,7 @@ call dein#add('vim-scripts/closetag.vim')
 call dein#add('Townk/vim-autoclose')
 call dein#add('scrooloose/nerdtree')
 call dein#add('ConradIrwin/vim-bracketed-paste')
+call dein#add('derekwyatt/vim-scala')
 
 "python環境
 call dein#add('davidhalter/jedi-vim')
