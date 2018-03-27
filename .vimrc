@@ -36,6 +36,14 @@ set history=5000 " 保存するコマンド履歴の数
 " htmlのとじタグ保管
 imap <C-/> <C-S-\>
 
+" スクリプトを編集しながら実行できるようにする
+autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
+autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
+autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
+autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %
+autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack runghc %
+
+
 " その他
 set showmatch " 括弧の対応表示
 set noswapfile " swapfileを作らない
@@ -99,4 +107,6 @@ set cursorline
 hi clear CursorLine
 
 "autocmd ColorScheme * highlight MatchParen gui=bold guibg=NONE guifg=blue
+
+
 
