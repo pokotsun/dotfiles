@@ -44,11 +44,35 @@ autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack runghc %
 
 
+
 " その他
 set showmatch " 括弧の対応表示
 set noswapfile " swapfileを作らない
 " escをCtr-jに対応させる
 imap <c-j> <esc> 
+
+" NERDTreeのショートカット
+nnoremap <C-^> :NERDTree<CR>
+
+" 検索文字列のハイライト解除
+nnoremap  <C-c><C-c> :<C-u>nohlsearch<cr><Esc>
+
+"キーボード・ショートカット
+noremap <S-h>   ^
+noremap <S-j>   }
+noremap <S-k>   {
+noremap <S-l>   $
+
+" unite.vimの設定
+noremap <C-U><C-F> :Unite -buffer-name=file file<CR> " ファイル一覧
+noremap <C-U><C-R> :Unite file_mru<CR> " 最近使ったファイル一覧
+
+au FileType unite nnoremap <silent> <buffer> <expr> <C-i> unite#do_action('split') " ウィンドウを分割して開く
+au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split')
+
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 "---------------------------------------------------------
 " Start Dein Settings.
@@ -70,6 +94,10 @@ call dein#add('Townk/vim-autoclose')
 call dein#add('scrooloose/nerdtree')
 call dein#add('ConradIrwin/vim-bracketed-paste')
 call dein#add('derekwyatt/vim-scala')
+
+" ディレクトリ処理
+call dein#add('Shougo/unite.vim')
+
 
 "python環境
 call dein#add('davidhalter/jedi-vim')

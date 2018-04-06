@@ -88,6 +88,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
     alias rails='bundle exec rails'
     alias rake='bundle exec rake'
+    alias ghci='stack ghci'
 fi
 
 # colored GCC warnings and errors
@@ -159,6 +160,6 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
 # scalaenvのパス通し
-export PATH="$HOME/.scalaenv/bin:$PATH"
-eval "$(scalaenv init -)"
+#export PATH="$HOME/.scalaenv/bin:$PATH"
+#eval "$(scalaenv init -)"
 
