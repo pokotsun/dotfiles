@@ -52,7 +52,7 @@ set noswapfile " swapfileを作らない
 imap <c-j> <esc> 
 
 " NERDTreeのショートカット
-nnoremap <C-^> :NERDTree<CR>
+nnoremap <C-t> :NERDTree<CR>
 
 " 検索文字列のハイライト解除
 nnoremap  <C-c><C-c> :<C-u>nohlsearch<cr><Esc>
