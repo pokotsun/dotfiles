@@ -54,8 +54,6 @@ imap <c-j> <esc>
 " NERDTreeのショートカット
 nnoremap <C-t> :NERDTree<CR>
 
-" 検索文字列のハイライト解除
-nnoremap  <C-c><C-c> :<C-u>nohlsearch<cr><Esc>
 
 "キーボード・ショートカット
 noremap <S-h>   ^
@@ -74,6 +72,20 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
+" Markdown編集
+" foldingを止める
+let g:vim_markdown_folding_disabled = 1
+"let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_math = 1
+
+" TableModeの設定
+let g:table_mode_corner = '|'
+
+" brower preview
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'google-chrome'
+
+
 "---------------------------------------------------------
 " Start Dein Settings.
 if &compatible
@@ -88,21 +100,42 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/neosnippet')
+"call dein#add('Shougo/neosnippet')
 call dein#add('vim-scripts/closetag.vim')
 call dein#add('Townk/vim-autoclose')
-call dein#add('scrooloose/nerdtree')
+" Treeを表示
+call dein#add('scrooloose/nerdtree')  
+
 call dein#add('ConradIrwin/vim-bracketed-paste')
+" Syntax HighLight系
+" scalaのsyntaxhighlight
 call dein#add('derekwyatt/vim-scala')
+call dein#add('elzr/vim-json')
 
 " ディレクトリ処理
 call dein#add('Shougo/unite.vim')
 
 
-"python環境
+" MarkDown編集用
+" Table挿入
+call dein#add('dhruvasagar/vim-table-mode')
+
+
+" TableFormat
+call dein#add('godlygeek/tabular')
+call dein#add('plasticboy/vim-markdown')
+call dein#add('kannokanno/previm')
+call dein#add('tyru/open-browser.vim')
+
+"python環境構築
 call dein#add('davidhalter/jedi-vim')
 
+" emmet用
 call dein#add('mattn/emmet-vim')
+
+" Vim-pluginTest
+call dein#add('pokotsun/helloworld-vim')
+"call dein#add('bonjin6770/hello-beautiful-world.vim')
 
 call dein#end()
 "---------------------------------------------------------
@@ -135,6 +168,4 @@ set cursorline
 hi clear CursorLine
 
 "autocmd ColorScheme * highlight MatchParen gui=bold guibg=NONE guifg=blue
-
-
 
