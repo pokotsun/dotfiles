@@ -134,7 +134,7 @@ call dein#add('davidhalter/jedi-vim')
 call dein#add('mattn/emmet-vim')
 
 " Vim-pluginTest
-call dein#add('pokotsun/helloworld-vim')
+"call dein#add('pokotsun/helloworld-vim')
 "call dein#add('bonjin6770/hello-beautiful-world.vim')
 
 call dein#end()
