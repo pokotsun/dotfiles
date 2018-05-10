@@ -36,6 +36,9 @@ set history=5000 " 保存するコマンド履歴の数
 " htmlのとじタグ保管
 imap <C-/> <C-S-\>
 
+" #で始まる行のインデントを保持する
+inoremap # X<C-H>#
+
 " スクリプトを編集しながら実行できるようにする
 autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
