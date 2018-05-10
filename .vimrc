@@ -1,6 +1,6 @@
 
 " エンコーディング
-
+  
 set encoding=utf-8 
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
@@ -49,7 +49,9 @@ autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack runghc %
 set showmatch " 括弧の対応表示
 set noswapfile " swapfileを作らない
 " escをCtr-jに対応させる
-imap <c-j> <esc> 
+noremap <C-j> <esc>
+noremap! <C-j> <esc>
+"imap <C-j> <esc> 
 
 " NERDTreeのショートカット
 nnoremap <C-t> :NERDTree<CR>
@@ -60,6 +62,10 @@ noremap <S-h>   ^
 noremap <S-j>   }
 noremap <S-k>   {
 noremap <S-l>   $
+
+" Tab移動
+noremap sn gt
+noremap sp gT
 
 " unite.vimの設定
 noremap <C-U><C-F> :Unite -buffer-name=file file<CR> " ファイル一覧
