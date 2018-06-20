@@ -131,21 +131,21 @@ fi
 umask 0002
 
 # rbenvの設定
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 # Goenvのパス通し
-export GOENV_ROOT="$HOME/.goenv"
-export GOPATH="$HOME/.go"
-export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
+#export GOENV_ROOT="$HOME/.goenv"
+#export GOPATH="$HOME/.go"
+#export GOBIN="$GOPATH/bin"
+#export PATH="$GOBIN:$PATH"
+#export PATH="$GOENV_ROOT/bin:$PATH"
+#eval "$(goenv init -)"
 
 # SDKMANのパス通し
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/pokotsun/.sdkman"
-[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
+#export SDKMAN_DIR="/home/pokotsun/.sdkman"
+#[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
 
 # pyenvのパス通し
 export PYENV_ROOT="$HOME/.pyenv"
@@ -156,8 +156,8 @@ fi
 eval "$(pyenv virtualenv-init -)"
 
 # jenvのパス通し
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
 
 # scalaenvのパス通し
 #export PATH="$HOME/.scalaenv/bin:$PATH"
