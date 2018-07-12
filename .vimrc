@@ -33,19 +33,28 @@ set number " 行番号表示
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 
+" map部分
 " htmlのとじタグ保管
 imap <C-/> <C-S-\>
 
 " #で始まる行のインデントを保持する
 inoremap # X<C-H>#
 
+"カッコ入力時に補完
+inoremap {<Enter> {}<Left><CR><BS><ESC><S-o>
+inoremap [<Enter> []<Left><CR><BS><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><BS><ESC><S-o>
+
+" C++のときに初めてファイルを呼んだらテンプレートを読見込ませるようにする
+autocmd BufNewFile,BufRead *.cpp if getfsize(@%) <= 0 | 0read ~/.vim/templates/template.cpp | endif
+
 " スクリプトを編集しながら実行できるようにする
+autocmd BufNewFile,BufRead *.cpp nnoremap <C-e> :!g++ % && ./a.out
 autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
 autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack runghc %
-
 
 
 " その他
@@ -80,6 +89,7 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+" unite.vimの設定終了
 
 " Markdown編集
 " foldingを止める
@@ -93,6 +103,9 @@ let g:table_mode_corner = '|'
 " brower preview
 au BufRead,BufNewFile *.md set filetype=markdown
 let g:previm_open_cmd = 'google-chrome'
+
+" Emmet Vim のEmmet変換キーの変更
+let g:user_emmet_leader_key = '<C-L>'
 
 
 "---------------------------------------------------------
@@ -141,6 +154,9 @@ call dein#add('davidhalter/jedi-vim')
 
 " emmet用
 call dein#add('mattn/emmet-vim')
+
+" typescript highlight
+call dein#add('leafgarland/typescript-vim')
 
 " Vim-pluginTest
 "call dein#add('pokotsun/helloworld-vim')

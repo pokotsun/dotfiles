@@ -163,3 +163,4 @@ eval "$(jenv init -)"
 #export PATH="$HOME/.scalaenv/bin:$PATH"
 #eval "$(scalaenv init -)"
 
+export PATH=$HOME/.nodebrew/current/bin:$PATH
