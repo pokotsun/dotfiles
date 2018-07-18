@@ -49,7 +49,7 @@ inoremap (<Enter> ()<Left><CR><BS><ESC><S-o>
 autocmd BufNewFile,BufRead *.cpp if getfsize(@%) <= 0 | 0read ~/.vim/templates/template.cpp | endif
 
 " スクリプトを編集しながら実行できるようにする
-autocmd BufNewFile,BufRead *.cpp nnoremap <C-e> :!g++ % && ./a.out
+autocmd BufNewFile,BufRead *.cpp nnoremap <C-e> :!g++ -std=c++14 % && ./a.out
 autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
