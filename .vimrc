@@ -158,6 +158,9 @@ call dein#add('mattn/emmet-vim')
 " typescript highlight
 call dein#add('leafgarland/typescript-vim')
 
+" go-vim
+call dein#add('fatih/vim-go')
+
 " Vim-pluginTest
 "call dein#add('pokotsun/helloworld-vim')
 "call dein#add('bonjin6770/hello-beautiful-world.vim')

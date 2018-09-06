@@ -136,7 +136,8 @@ eval "$(rbenv init -)"
 
 # Goenvのパス通し
 export GOENV_ROOT="$HOME/.goenv"
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/workplace/golang"
+#export GOPATH="$HOME/workplace/golang/"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"
 export PATH="$GOENV_ROOT/bin:$PATH"
@@ -156,11 +157,14 @@ fi
 eval "$(pyenv virtualenv-init -)"
 
 # jenvのパス通し
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
 
 # scalaenvのパス通し
 #export PATH="$HOME/.scalaenv/bin:$PATH"
 #eval "$(scalaenv init -)"
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# Flutterのパス通し
+export PATH=/usr/local/flutter/bin:$PATH
