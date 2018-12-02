@@ -168,3 +168,12 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # Flutterのパス通し
 export PATH=/usr/local/flutter/bin:$PATH
+
+# Rustのインストール
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Trash-cli
+if type trash-put &> /dev/null
+then 
+    alias rm=trash-put
+fi

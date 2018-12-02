@@ -1,4 +1,3 @@
-
 " エンコーディング
   
 set encoding=utf-8 
@@ -18,9 +17,7 @@ set smartindent " 改行時に前の行の構文をチェックし次の行の�
 set shiftwidth=4 " smartindentで増減する幅
 "filetype indent on
 
-
 " 文字列検索
-
 set hlsearch " 検索結果をハイライト
 " ESCキー2度押しでハイライトの切り替え
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
@@ -50,12 +47,23 @@ autocmd BufNewFile,BufRead *.cpp if getfsize(@%) <= 0 | 0read ~/.vim/templates/t
 
 " スクリプトを編集しながら実行できるようにする
 autocmd BufNewFile,BufRead *.cpp nnoremap <C-e> :!g++ -std=c++14 % && ./a.out
-autocmd BufNewFile,BufRead *.rb nnoremap <C-e> :!ruby %
+autocmd BufNewFile,BufRead *.rb call SetRubyOptions() 
 autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
 autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack runghc %
+autocmd Filetype go call SetGoOptions()
 
+" 各拡張子ごとの設定用関数
+
+function SetRubyOptions()
+    nnoremap <C-e> :!ruby %
+endfunction
+
+function SetGoOptions()
+    nnoremap <C-e> :GoRun
+    nnoremap <C-d> :GoDef<CR>
+endfunction
 
 " その他
 set showmatch " 括弧の対応表示
@@ -65,8 +73,6 @@ noremap <C-j> <esc>
 noremap! <C-j> <esc>
 "imap <C-j> <esc> 
 
-" NERDTreeのショートカット
-nnoremap <C-t> :NERDTree<CR>
 
 
 "キーボード・ショートカット
@@ -91,6 +97,9 @@ au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 " unite.vimの設定終了
 
+" NERDTreeのショートカット
+nnoremap <C-t> :NERDTree<CR>
+"
 " Markdown編集
 " foldingを止める
 let g:vim_markdown_folding_disabled = 1
@@ -107,6 +116,14 @@ let g:previm_open_cmd = 'google-chrome'
 " Emmet Vim のEmmet変換キーの変更
 let g:user_emmet_leader_key = '<C-L>'
 
+" vim-goの設定
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_function_arguments = 1 
+let g:go_highlight_variable_declarations = 1
 
 "---------------------------------------------------------
 " Start Dein Settings.
@@ -142,15 +159,11 @@ call dein#add('Shougo/unite.vim')
 " Table挿入
 call dein#add('dhruvasagar/vim-table-mode')
 
-
 " TableFormat
 call dein#add('godlygeek/tabular')
 call dein#add('plasticboy/vim-markdown')
 call dein#add('kannokanno/previm')
 call dein#add('tyru/open-browser.vim')
-
-"python環境構築
-call dein#add('davidhalter/jedi-vim')
 
 " emmet用
 call dein#add('mattn/emmet-vim')
@@ -160,6 +173,8 @@ call dein#add('leafgarland/typescript-vim')
 
 " go-vim
 call dein#add('fatih/vim-go')
+call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('cespare/vim-toml')
 
 " Vim-pluginTest
 "call dein#add('pokotsun/helloworld-vim')
@@ -176,6 +191,8 @@ if !has('gui_running')
     autocmd!
     autocmd VimEnter,ColorScheme * highlight Normal ctermbg=none
     autocmd VimEnter,ColorScheme * highlight LineNr ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight LineNr ctermfg=grey
+    autocmd VimEnter,ColorScheme * highlight CursorLineNr ctermbg=none
     autocmd VimEnter,ColorScheme * highlight SignColumn ctermbg=none
     autocmd VimEnter,ColorScheme * highlight VertSplit ctermbg=none
     autocmd VimEnter,ColorScheme * highlight NonText ctermbg=none
@@ -183,6 +200,8 @@ if !has('gui_running')
 endif
 
 " コメントの色を変える
+let g:rehash256=1
+let g:molokai_original = 1
 colorscheme molokai
 hi Comment ctermfg=darkcyan
 hi Visual ctermfg=magenta
@@ -196,4 +215,5 @@ set cursorline
 hi clear CursorLine
 
 "autocmd ColorScheme * highlight MatchParen gui=bold guibg=NONE guifg=blue
+
 
