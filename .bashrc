@@ -89,6 +89,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias rails='bundle exec rails'
     alias rake='bundle exec rake'
     alias ghci='stack ghci'
+    alias pbcopy='xsel --clipboard --input'
 fi
 
 # colored GCC warnings and errors

@@ -125,6 +125,10 @@ let g:go_highlight_operators = 1
 let g:go_highlight_function_arguments = 1 
 let g:go_highlight_variable_declarations = 1
 
+" set clang options for vim-clang
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z -stdlib=libstdc++ --pedantic-errors'
+
 "---------------------------------------------------------
 " Start Dein Settings.
 if &compatible
@@ -154,6 +158,8 @@ call dein#add('elzr/vim-json')
 " ディレクトリ処理
 call dein#add('Shougo/unite.vim')
 
+" LaTEX
+call dein#add('vim-latex/vim-latex')
 
 " MarkDown編集用
 " Table挿入
@@ -175,6 +181,9 @@ call dein#add('leafgarland/typescript-vim')
 call dein#add('fatih/vim-go')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('cespare/vim-toml')
+
+" vim-c++
+call dein#add('justmao945/vim-clang')
 
 " Vim-pluginTest
 "call dein#add('pokotsun/helloworld-vim')
