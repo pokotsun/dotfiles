@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm|xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -61,16 +61,17 @@ function parse_git_branch {
 }
 
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\t\[\033[01;37m\]@\[\033[1;34m\]\u\[\033[01;37m\]:\[\033[01;35m\]\W\[\033[00;32m\]$(parse_git_branch)\[\033[00;37m\]\$ '
+        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\t\[\033[01;37m\]@\[\033[1;34m\]\u\[\033[01;37m\]:\[\033[01;35m\]\W\[\033[00;32m\]$(parse_git_branch)\[\033[00;37m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -86,10 +87,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
-    alias rails='bundle exec rails'
-    alias rake='bundle exec rake'
+    #alias rails='bundle exec rails'
+    #alias rake='bundle exec rake'
     alias ghci='stack ghci'
-    alias pbcopy='xsel --clipboard --input'
+    #alias pbcopy='xsel --clipboard --input'
+
 fi
 
 # colored GCC warnings and errors
@@ -99,7 +101,6 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias pycharm="$HOME/.bin/pycharm-community-2017.3.1/bin/pycharm.sh"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -113,6 +114,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -123,58 +125,46 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-if [ -x /usr/bin/mint-fortune ]; then
-     /usr/bin/mint-fortune
-fi
-
 ## defaultのディレクトリ作成時の権限変更
 umask 0002
 
-# rbenvの設定
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+## rbenvの設定
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+#
+## Goenvのパス通し
+#export GOENV_ROOT="$HOME/.goenv"
+#export GOPATH="$HOME/workplace/golang"
+##export GOPATH="$HOME/workplace/golang/"
+#export GOBIN="$GOPATH/bin"
+#export PATH="$GOBIN:$PATH"
+#export PATH="$GOENV_ROOT/bin:$PATH"
+#eval "$(goenv init -)"
+#
+## SDKMANのパス通し
+##THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+#export SDKMAN_DIR="/home/pokotsun/.sdkman"
+#[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
+#
+## pyenvのパス通し
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init -)"
+#fi
+#export PATH=$HOME/.nodebrew/current/bin:$PATH
+#
+## Flutterのパス通し
+#export PATH=/usr/local/flutter/bin:$PATH
+#
+## Rustのインストール
+#export PATH="$HOME/.cargo/bin:$PATH"
+#
+## Trash-cli
+#if type trash-put &> /dev/null
+#then
+#    alias rm=trash-put
+#fi
 
-# Goenvのパス通し
-export GOENV_ROOT="$HOME/.goenv"
-export GOPATH="$HOME/workplace/golang"
-#export GOPATH="$HOME/workplace/golang/"
-export GOBIN="$GOPATH/bin"
-export PATH="$GOBIN:$PATH"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-
-# SDKMANのパス通し
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/pokotsun/.sdkman"
-[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
-
-# pyenvのパス通し
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-eval "$(pyenv virtualenv-init -)"
-
-# jenvのパス通し
-#export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
-
-# scalaenvのパス通し
-#export PATH="$HOME/.scalaenv/bin:$PATH"
-#eval "$(scalaenv init -)"
-
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# Flutterのパス通し
-export PATH=/usr/local/flutter/bin:$PATH
-
-# Rustのインストール
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Trash-cli
-if type trash-put &> /dev/null
-then 
-    alias rm=trash-put
-fi
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
