@@ -1,5 +1,4 @@
 " エンコーディング
-  
 set encoding=utf-8 
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
@@ -73,6 +72,8 @@ noremap <C-j> <esc>
 noremap! <C-j> <esc>
 "imap <C-j> <esc> 
 
+" normal modeのときだけ;を:に対応させる
+nnoremap ; :
 
 
 "キーボード・ショートカット

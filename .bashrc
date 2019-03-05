@@ -166,5 +166,14 @@ umask 0002
 #    alias rm=trash-put
 #fi
 
+# anyenv 
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+# CUDA and cuDNN paths
+export CUDA_PATH="/usr/local/cuda-9.0"
+export PATH="$CUDA_PATH/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_PATH/lib64:$LD_LIBRARY_PATH"
+export CPATH="$CUDA_PATH/include"
+export LIBRARY_PATH="$CUDA_PATH/lib64:$LIBRARY_PATH"
+
