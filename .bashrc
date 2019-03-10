@@ -90,7 +90,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias rails='bundle exec rails'
     #alias rake='bundle exec rake'
     alias ghci='stack ghci'
-    #alias pbcopy='xsel --clipboard --input'
+    alias pbcopy='xsel --clipboard --input'
 
 fi
 
@@ -128,10 +128,6 @@ fi
 ## defaultのディレクトリ作成時の権限変更
 umask 0002
 
-## rbenvの設定
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-#
 ## Goenvのパス通し
 #export GOENV_ROOT="$HOME/.goenv"
 #export GOPATH="$HOME/workplace/golang"
@@ -145,15 +141,7 @@ umask 0002
 ##THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 #export SDKMAN_DIR="/home/pokotsun/.sdkman"
 #[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
-#
-## pyenvのパス通し
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-#if command -v pyenv 1>/dev/null 2>&1; then
-#  eval "$(pyenv init -)"
-#fi
-#export PATH=$HOME/.nodebrew/current/bin:$PATH
-#
+
 ## Flutterのパス通し
 #export PATH=/usr/local/flutter/bin:$PATH
 #
@@ -161,14 +149,17 @@ umask 0002
 #export PATH="$HOME/.cargo/bin:$PATH"
 #
 ## Trash-cli
-#if type trash-put &> /dev/null
-#then
-#    alias rm=trash-put
-#fi
+if type trash-put &> /dev/null
+then
+    alias rm=trash-put
+fi
 
 # anyenv 
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+# node brewのパス通し
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # CUDA and cuDNN paths
 export CUDA_PATH="/usr/local/cuda-9.0"

@@ -31,7 +31,7 @@ set history=5000 " 保存するコマンド履歴の数
 
 " map部分
 " htmlのとじタグ保管
-imap <C-/> <C-S-\>
+"imap <C-/> <C-S-\>
 
 " #で始まる行のインデントを保持する
 inoremap # X<C-H>#
@@ -144,24 +144,27 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neomru.vim')
-"call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet')
 call dein#add('vim-scripts/closetag.vim')
-call dein#add('Townk/vim-autoclose')
+
+" カッコを閉じるやつ(コメントアウトで謎のスペースが空いてしまうエラーがあるため断念)
+"call dein#add('Townk/vim-autoclose')
+call dein#add('cohama/lexima')
 " Treeを表示
 call dein#add('scrooloose/nerdtree')  
-
+"
 call dein#add('ConradIrwin/vim-bracketed-paste')
 " Syntax HighLight系
 " scalaのsyntaxhighlight
 call dein#add('derekwyatt/vim-scala')
 call dein#add('elzr/vim-json')
-
-" ディレクトリ処理
+"
+"" ディレクトリ処理
 call dein#add('Shougo/unite.vim')
-
+"
 " LaTEX
 call dein#add('vim-latex/vim-latex')
-
+"
 " MarkDown編集用
 " Table挿入
 call dein#add('dhruvasagar/vim-table-mode')
@@ -186,9 +189,11 @@ call dein#add('cespare/vim-toml')
 " vim-c++
 call dein#add('justmao945/vim-clang')
 
-" Vim-pluginTest
-"call dein#add('pokotsun/helloworld-vim')
-"call dein#add('bonjin6770/hello-beautiful-world.vim')
+" vim-elixir
+call dein#add('elixir-lang/vim-elixir')
+"" Vim-pluginTest
+""call dein#add('pokotsun/helloworld-vim')
+""call dein#add('bonjin6770/hello-beautiful-world.vim')
 
 call dein#end()
 "---------------------------------------------------------
