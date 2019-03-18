@@ -51,6 +51,7 @@ autocmd BufNewFile,BufRead *.py nnoremap <C-e> :!python %
 autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
 autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %
 autocmd BufNewFile,BufRead *.hs nnoremap <C-e> :!stack runghc %
+autocmd BufNewFile,BufRead *.rs nnoremap <C-e> :!rustc % -o a.out && ./a.out
 autocmd Filetype go call SetGoOptions()
 
 " 各拡張子ごとの設定用関数

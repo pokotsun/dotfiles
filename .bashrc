@@ -145,8 +145,8 @@ umask 0002
 ## Flutterのパス通し
 #export PATH=/usr/local/flutter/bin:$PATH
 #
-## Rustのインストール
-#export PATH="$HOME/.cargo/bin:$PATH"
+# Rustのインストール
+export PATH="$HOME/.cargo/bin:$PATH"
 #
 ## Trash-cli
 if type trash-put &> /dev/null
