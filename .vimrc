@@ -5,9 +5,9 @@ set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=double "文字が崩れる問題を解決
+set clipboard=unnamedplus "clipboard
 
 "タブ インデント
-
 set tabstop=4 " タブステップ
 set expandtab " タブ入力を複数の空白入力に置き換える
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
@@ -15,6 +15,9 @@ set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 set shiftwidth=4 " smartindentで増減する幅
 "filetype indent on
+
+" leader setting
+let mapleader = ","
 
 " 文字列検索
 set hlsearch " 検索結果をハイライト
@@ -25,7 +28,6 @@ nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 set number " 行番号表示
 
 " コマンド補完
-
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 
@@ -55,7 +57,6 @@ autocmd BufNewFile,BufRead *.rs nnoremap <C-e> :!rustc % -o a.out && ./a.out
 autocmd Filetype go call SetGoOptions()
 
 " 各拡張子ごとの設定用関数
-
 function SetRubyOptions()
     nnoremap <C-e> :!ruby %
 endfunction
@@ -83,9 +84,9 @@ noremap <S-j>   }
 noremap <S-k>   {
 noremap <S-l>   $
 
-" Tab移動
-noremap sn gt
-noremap sp gT
+" indent
+noremap > >>
+noremap < << 
 
 " unite.vimの設定
 noremap <C-U><C-F> :Unite -buffer-name=file file<CR> " ファイル一覧
@@ -96,11 +97,11 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split
 
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC> q
 " unite.vimの設定終了
 
 " NERDTreeのショートカット
-nnoremap <C-t> :NERDTree<CR>
+nnoremap <Leader>t :NERDTree<CR>
 "
 " Markdown編集
 " foldingを止める
@@ -147,6 +148,7 @@ call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('vim-scripts/closetag.vim')
+call dein#add('easymotion/vim-easymotion')
 
 " カッコを閉じるやつ(コメントアウトで謎のスペースが空いてしまうエラーがあるため断念)
 "call dein#add('Townk/vim-autoclose')
@@ -159,7 +161,8 @@ call dein#add('ConradIrwin/vim-bracketed-paste')
 " scalaのsyntaxhighlight
 call dein#add('derekwyatt/vim-scala')
 call dein#add('elzr/vim-json')
-"
+" nginx conf syntax
+call dein#add('chr4/nginx.vim')
 "" ディレクトリ処理
 call dein#add('Shougo/unite.vim')
 "

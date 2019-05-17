@@ -115,6 +115,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/NULL ]; then
+    rm ~/NULL
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -125,26 +129,18 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 ## defaultのディレクトリ作成時の権限変更
 umask 0002
 
-## Goenvのパス通し
-#export GOENV_ROOT="$HOME/.goenv"
-#export GOPATH="$HOME/workplace/golang"
-##export GOPATH="$HOME/workplace/golang/"
-#export GOBIN="$GOPATH/bin"
-#export PATH="$GOBIN:$PATH"
-#export PATH="$GOENV_ROOT/bin:$PATH"
-#eval "$(goenv init -)"
-#
 ## SDKMANのパス通し
 ##THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 #export SDKMAN_DIR="/home/pokotsun/.sdkman"
 #[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
 
-## Flutterのパス通し
-#export PATH=/usr/local/flutter/bin:$PATH
-#
+# lutterのパス通し
+export PATH=/usr/local/flutter/bin:$PATH
+
 # Rustのインストール
 export PATH="$HOME/.cargo/bin:$PATH"
 #
@@ -157,6 +153,11 @@ fi
 # anyenv 
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+# GoLangのPATH通し
+export GOENV_DISABLE_GOPATH=1
+export GOPATH="$HOME/workplace/golang"
+export PATH="$GOPATH/bin:$PATH"
 
 # node brewのパス通し
 export PATH=$HOME/.nodebrew/current/bin:$PATH
