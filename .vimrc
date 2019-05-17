@@ -35,7 +35,7 @@ set history=5000 " 保存するコマンド履歴の数
 " htmlのとじタグ保管
 "imap <C-/> <C-S-\>
 
-" #で始まる行のインデントを保持する
+" #で始まる行のインデントを保持する(cope with python comment out)
 inoremap # X<C-H>#
 
 "カッコ入力時に補完
@@ -88,9 +88,9 @@ noremap <S-l>   $
 noremap > >>
 noremap < << 
 
-" unite.vimの設定
-noremap <C-U><C-F> :Unite -buffer-name=file file<CR> " ファイル一覧
-noremap <C-U><C-R> :Unite file_mru<CR> " 最近使ったファイル一覧
+" setting of unite.vim 
+noremap <Leader>fl :Unite -buffer-name=file file<CR> "list all files
+noremap <Leader>fr :Unite file_mru<CR> " list files which used recently 
 
 au FileType unite nnoremap <silent> <buffer> <expr> <C-i> unite#do_action('split') " ウィンドウを分割して開く
 au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split')
@@ -147,6 +147,7 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 call dein#add('vim-scripts/closetag.vim')
 call dein#add('easymotion/vim-easymotion')
 
