@@ -89,6 +89,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
     #alias rails='bundle exec rails'
     #alias rake='bundle exec rake'
+    alias vi='nvim'
+    alias vim='nvim'
     alias ghci='stack ghci'
     alias pbcopy='xsel --clipboard --input'
 

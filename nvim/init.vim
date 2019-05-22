@@ -1,13 +1,13 @@
 " encoding 
 set encoding=utf-8
 scriptencoding utf-8
-set fileencoding=utf-8 " 保存時の文字コード
+set fileencoding=utf-8 " char-code on saving file 
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
 set ambiwidth=double "文字が崩れる問題を解決
 
-"タブ インデント
-set tabstop=4 " タブステップ
+" Tab Indent
+set tabstop=4 " tab step 
 set expandtab " タブ入力を複数の空白入力に置き換える
 set softtabstop=4 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
 set autoindent " 改行時に前の行のインデントを継続する
@@ -31,12 +31,12 @@ set noswapfile " swapfileを作らない
 
 
 " key mapping
-" escをCtr-jに対応させる
+" esc to ctr-j 
 noremap <C-j> <esc>
 noremap! <C-j> <esc>
-" normal modeのときだけ;を:に対応させる
-nnoremap ; :
-"キーボード・ショートカット
+" when normal mode, ; to :
+nnoremap ; : 
+
 noremap <S-h>   ^
 noremap <S-j>   }
 noremap <S-k>   {
@@ -58,8 +58,6 @@ if dein#load_state('~/.cache/dein')
 
   call dein#load_toml('~/.config/nvim/dein.toml', {'lazy': 0})
   call dein#load_toml('~/.config/nvim/dein_lazy.toml', {'lazy': 1})
-
-  " Add or remove your plugins here like this:
 
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
@@ -98,16 +96,6 @@ if !has('gui_running')
     autocmd VimEnter,ColorScheme * highlight NonText ctermbg=none
   augroup END
 endif
-let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_delay = 0
-  let g:deoplete#auto_complete_start_length = 1
-  let g:deoplete#enable_camel_case = 0
-  let g:deoplete#enable_ignore_case = 0
-  let g:deoplete#enable_refresh_always = 0
-  let g:deoplete#enable_smart_case = 1
-  let g:deoplete#file#enable_buffer_path = 1
-  let g:deoplete#max_list = 10000
-  set completeopt-=preview
 
 " コメントの色を変える
 let g:rehash256=1
