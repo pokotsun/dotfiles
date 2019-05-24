@@ -35,7 +35,7 @@ set noswapfile " swapfileを作らない
 noremap <C-j> <esc>
 noremap! <C-j> <esc>
 " when normal mode, ; to :
-nnoremap ; : 
+nnoremap ; :
 
 noremap <S-h>   ^
 noremap <S-j>   }
@@ -50,7 +50,42 @@ noremap < <<
 nnoremap <Leader>fn :call OpenFileFromCurrentPath(1)<CR>
 nnoremap <Leader>fc :call OpenFileFromCurrentPath(0)<CR>
 
+" Executor for each kind programs    
+autocmd BufNewFile,BufRead *.cpp call SetCPPOptions()
+autocmd BufNewFile,BufRead *.rb call SetRubyOptions()     
+autocmd BufNewFile,BufRead *.py call SetPythonOptions()    
+autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %    
+autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %    
+autocmd BufNewFile,BufRead *.hs call SetHaskellOptions()
+autocmd BufNewFile,BufRead *.rs call SetRustOptions()
+autocmd Filetype go call SetGoOptions()    
+    
 "" FUNCTIONS ----------------------------------
+function SetCPPOptions()
+    nnoremap <C-e> :!g++ -std=c++14 % && ./a.out
+endfunction
+
+function SetPythonOptions()
+    nnoremap <C-e> :!python %
+endfunction
+
+function SetRubyOptions()    
+    nnoremap <C-e> :!ruby %    
+endfunction    
+
+function SetHaskellOptions()
+    nnoremap <C-e> :!stack runghc %
+endfunction
+    
+function SetGoOptions()    
+    nnoremap <C-e> :GoRun    
+    nnoremap <C-d> :GoDef<CR>    
+endfunction
+
+function SetRustOptions()
+    nnoremap <C-e> :!rustc % -o a.out && ./a.out
+endfunction
+
 function OpenFileFromCurrentPath(withNewWindow)
     let path = expand("%:p:h")."/"
     if a:withNewWindow
@@ -61,7 +96,7 @@ function OpenFileFromCurrentPath(withNewWindow)
 endfunction
 
 
-" dein.vim
+" ----------------- dein.vim ---------------------
 if &compatible
   set nocompatible
 endif
