@@ -131,8 +131,6 @@ let g:go_highlight_variable_declarations = 1
 " set clang options for vim-clang
 let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++1z -stdlib=libstdc++ --pedantic-errors'
-
-
  
 " SuperTab like snippets behavior.
 imap  <expr><TAB>
@@ -146,7 +144,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
 
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.

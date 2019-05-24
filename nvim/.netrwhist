@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/pokotsun/workplace/golang/src/github.com/pokotsun/isucon7-revenge/isubata/webapp/go/src/isubata'
-let g:netrw_dirhist_2='/home/pokotsun/.dotfiles/nvim'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/pokotsun/workplace/golang/src/github.com/pokotsun/isucon7-revenge/isubata/webapp/go/src'
+let g:netrw_dirhist_2='/home/pokotsun/workplace/golang/src/github.com/pokotsun/isucon7-revenge/isubata/webapp/go/src/isubata'
+let g:netrw_dirhist_3='/home/pokotsun'

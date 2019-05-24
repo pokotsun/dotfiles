@@ -1,0 +1,102 @@
+# neosnippet
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+    let g:neosnippet#snippets_directory='~/.cache/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+'''
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+# --------------------- Syntax and Language Snippet ---------------------------------- #
+[[plugins]]
+repo = 'justmao945/vim-clang'
+hook_add = '''
+    let g:clang_c_options = '-std=c14'
+    let g:clang_cpp_options = '-std=c++1z -stdlib=libstdc++ --pedantic-errors'
+'''
+on_ft = 'clang_complete'
+
+
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''
+    let g:go_highlight_fields = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_types = 1
+    let g:go_highlight_function_calls = 1
+    let g:go_highlight_operators = 1
+    let g:go_highlight_function_arguments = 1
+    let g:go_highlight_variable_declarations = 1
+'''
+on_ft='go'
+
+# Syntax Highlight
+## languages
+[[plugins]]
+repo = 'derekwyatt/vim-scala'
+on_ft = '*.scala'
+
+[[plugins]]
+repo = 'elixir-lang/vim-elixir'
+on_ft = 'elixir'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft='typescript'
+
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+on_ft='*.tex'
+
+[[plugins]]
+repo = 'chr4/nginx.vim'
+
+## Latex
+[[plugins]]
+repo = 'vim-latex/vim-latex'
+on_ft='*.tex'
+
+# key value type files
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+
+# Markdown
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+hook_add = '''
+    let g:table_mode_corner = '|'
+'''
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+hook_add = '''
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_math = 1
+'''
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'kannokanno/previm'
+hook_add = '''
+    au BufRead,BufNewFile *.md set filetype=markdown
+    let g:previm_open_cmd = 'google-chrome'
+'''
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = 'markdown'
+
+

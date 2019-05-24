@@ -46,6 +46,21 @@ noremap <S-l>   $
 noremap > >>
 noremap < << 
 
+" open new file from current file opened path
+nnoremap <Leader>fn :call OpenFileFromCurrentPath(1)<CR>
+nnoremap <Leader>fc :call OpenFileFromCurrentPath(0)<CR>
+
+"" FUNCTIONS ----------------------------------
+function OpenFileFromCurrentPath(withNewWindow)
+    let path = expand("%:p:h")."/"
+    if a:withNewWindow
+        execute "Sex ".path
+    else
+        execute "ex ".path
+    endif
+endfunction
+
+
 " dein.vim
 if &compatible
   set nocompatible
