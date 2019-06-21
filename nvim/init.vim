@@ -1,4 +1,5 @@
 " encoding 
+let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/versions/3.6.8/bin/python')
 set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " char-code on saving file 
@@ -15,7 +16,7 @@ set smartindent " 改行時に前の行の構文をチェックし次の行の�
 set shiftwidth=4 " smartindentで増減する幅
 
 set splitright "画面を縦分割する際に右に開く
-set clipboard=unnamedplus "clipboard
+"set clipboard=unnamedplus "clipboard
 
 " leader setting
 let mapleader = ","
@@ -26,9 +27,8 @@ set number
 
 
 " others 
-set showmatch " 括弧の対応表示
+set showmatch " display bracket correspondence 
 set noswapfile " swapfileを作らない
-
 
 " key mapping
 " esc to ctr-j 
@@ -46,9 +46,30 @@ noremap <S-l>   $
 noremap > >>
 noremap < << 
 
+" tab
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap th :tabprevious<CR>
+nnoremap tl :tabnext<CR>
+" nnoremap th gT
+" nnoremap tl gt
+
+" ctag keymap
+nnoremap <Leader><C-h> <C-t> 
+nnoremap <Leader><C-l> :call OpenSourceOfDeclaration()<CR>
+
 " open new file from current file opened path
-nnoremap <Leader>fn :call OpenFileFromCurrentPath(1)<CR>
-nnoremap <Leader>fc :call OpenFileFromCurrentPath(0)<CR>
+nnoremap <Leader><S-e> :Explore<CR>
+nnoremap <Leader><S-s>e :Sexplore<CR>
+nnoremap <Leader><S-v>e :Vexplore<CR>
+"nnoremap <Leader>fn :call OpenFileFromCurrentPath(1)<CR>
+"nnoremap <Leader>fc :call OpenFileFromCurrentPath(0)<CR>
+
+" unhighlight matching strings
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+" remap <t-f> command moving action
+nnoremap <Leader>h ,
+nnoremap <Leader>l ;
 
 " Executor for each kind programs    
 autocmd BufNewFile,BufRead *.cpp call SetCPPOptions()
@@ -58,11 +79,12 @@ autocmd BufNewFile,BufRead *.pl nnoremap <C-e> :!perl %
 autocmd BufNewFile,BufRead *.scala nnoremap <C-e> :!scala %    
 autocmd BufNewFile,BufRead *.hs call SetHaskellOptions()
 autocmd BufNewFile,BufRead *.rs call SetRustOptions()
+autocmd BufNewFile,BufRead *.kt call SetKotlinOptions()
 autocmd Filetype go call SetGoOptions()    
     
-"" FUNCTIONS ----------------------------------
+" --------------FUNCTIONS-----------------"
 function SetCPPOptions()
-    nnoremap <C-e> :!g++ -std=c++14 % && ./a.out
+    nnoremap <C-e> :!g++ -std=c++14 %
 endfunction
 
 function SetPythonOptions()
@@ -84,6 +106,17 @@ endfunction
 
 function SetRustOptions()
     nnoremap <C-e> :!rustc % -o a.out && ./a.out
+endfunction
+
+function SetKotlinOptions()
+    nnoremap <C-e> :!kotlinc-jvm hello.kt  -include-runtime -d main.jar && java -jar main.jar
+endfunction
+
+
+function OpenSourceOfDeclaration()
+    let word = expand('<cword>')
+    execute "split"
+    execute "tjump ".word
 endfunction
 
 function OpenFileFromCurrentPath(withNewWindow)
@@ -119,7 +152,7 @@ if dein#load_state('~/.cache/dein')
 endif
 
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible               " Be improved
 endif
 
 filetype plugin indent on

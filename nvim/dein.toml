@@ -16,6 +16,19 @@ hook_add = '''
     set completeopt-=preview
 '''
 
+# neosnippet
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+    let g:neosnippet#snippets_directory='~/.cache/dein/repos/github.com/Shougo/neosnippet-snippets/neosnippets'
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+'''
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
@@ -27,7 +40,7 @@ repo = 'cohama/lexima.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
-    noremap <Leader>fl :Denite -buffer-name=file file<CR> "list all files
+    noremap <Leader>ff :Denite -buffer-name=file file<CR> "list all files
     noremap <Leader>fr :Denite file_mru<CR> " list files which used recently 
     call denite#custom#map('insert', "<C-J>", '<denite:enter_mode:normal>', 'noremap')
     call denite#custom#map('insert', "<C-O>", 'denite:input_command_line', 'noremap')
@@ -37,3 +50,7 @@ depends = ['Shougo/neomru.vim']
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 
+
+# Syntax Highlight
+[[plugins]]
+repo = 'chr4/nginx.vim'

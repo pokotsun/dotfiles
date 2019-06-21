@@ -93,6 +93,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias vim='nvim'
     alias ghci='stack ghci'
     alias pbcopy='xsel --clipboard --input'
+    alias open='xdg-open'
 
 fi
 
@@ -165,7 +166,7 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # CUDA and cuDNN paths
-export CUDA_PATH="/usr/local/cuda-9.0"
+export CUDA_PATH="/usr/local/cuda"
 export PATH="$CUDA_PATH/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_PATH/lib64:$LD_LIBRARY_PATH"
 export CPATH="$CUDA_PATH/include"
