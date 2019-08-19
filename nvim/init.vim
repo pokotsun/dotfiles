@@ -15,6 +15,8 @@ set autoindent " 改行時に前の行のインデントを継続する
 set smartindent " 改行時に前の行の構文をチェックし次の行のインデントを増減する
 set shiftwidth=4 " smartindentで増減する幅
 
+set autoread " when file is modified, reflesh content
+
 set splitright "画面を縦分割する際に右に開く
 "set clipboard=unnamedplus "clipboard
 
@@ -25,15 +27,14 @@ let mapleader = ","
 syntax on
 set number
 
-
 " others 
 set showmatch " display bracket correspondence 
 set noswapfile " swapfileを作らない
 
 " key mapping
 " esc to ctr-j 
-noremap <C-j> <esc>
-noremap! <C-j> <esc>
+"noremap <C-j> <esc>
+"noremap! <C-j> <esc>
 " when normal mode, ; to :
 nnoremap ; :
 
@@ -58,18 +59,21 @@ nnoremap <Leader><C-h> <C-t>
 nnoremap <Leader><C-l> :call OpenSourceOfDeclaration()<CR>
 
 " open new file from current file opened path
-nnoremap <Leader><S-e> :Explore<CR>
-nnoremap <Leader><S-s>e :Sexplore<CR>
-nnoremap <Leader><S-v>e :Vexplore<CR>
+nnoremap <Leader>e :Explore<CR>
+nnoremap <Leader>se :Sexplore<CR>
+nnoremap <Leader>ve :Vexplore<CR>
 "nnoremap <Leader>fn :call OpenFileFromCurrentPath(1)<CR>
 "nnoremap <Leader>fc :call OpenFileFromCurrentPath(0)<CR>
 
 " unhighlight matching strings
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> <Leader>nh :<C-u>nohlsearch<CR><C-l>
 
 " remap <t-f> command moving action
-nnoremap <Leader>h ,
-nnoremap <Leader>l ;
+nnoremap <C-h> ,
+nnoremap <C-l> ;
+
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
 " Executor for each kind programs    
 autocmd BufNewFile,BufRead *.cpp call SetCPPOptions()
@@ -82,7 +86,7 @@ autocmd BufNewFile,BufRead *.rs call SetRustOptions()
 autocmd BufNewFile,BufRead *.kt call SetKotlinOptions()
 autocmd Filetype go call SetGoOptions()    
     
-" --------------FUNCTIONS-----------------"
+" --------------OPTION FUNCTIONS-----------------"
 function SetCPPOptions()
     nnoremap <C-e> :!g++ -std=c++14 %
 endfunction
@@ -100,8 +104,8 @@ function SetHaskellOptions()
 endfunction
     
 function SetGoOptions()    
-    nnoremap <C-e> :GoRun    
-    nnoremap <C-d> :GoDef<CR>    
+    nnoremap <Leader><C-e> :GoRun<CR>
+    nnoremap <Leader><C-d> :GoDef<CR>    
 endfunction
 
 function SetRustOptions()
@@ -109,7 +113,15 @@ function SetRustOptions()
 endfunction
 
 function SetKotlinOptions()
-    nnoremap <C-e> :!kotlinc-jvm hello.kt  -include-runtime -d main.jar && java -jar main.jar
+    "nnoremap <C-e> :!kotlinc-jvm % -include-runtime -d main.jar
+    nnoremap <C-e> :!kotlinc % -include-runtime -d main.jar
+endfunction
+
+function! s:VSetSearch()
+    let temp = @s
+    norm! gv"sy
+    let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+    let @s = temp
 endfunction
 
 
@@ -186,10 +198,13 @@ let g:molokai_original = 1
 colorscheme molokai
 hi Comment ctermfg=darkcyan
 hi Visual ctermfg=magenta
+"hi MatchParen cterm=none ctermbg=green ctermfg=blue
 
 " カッコのハイライト時の色を変える
+"hi MatchParen      ctermfg=224  ctermbg=208 cterm=bold
 hi MatchParen cterm=bold ctermfg=cyan ctermbg=blue
-set t_Co=256
+hi Delimiter cterm=bold ctermfg=101
+"set t_Co=256
 
 " 表示行のみ色付け
 set cursorline

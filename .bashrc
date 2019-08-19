@@ -56,6 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+## functions 
 function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
@@ -67,6 +68,7 @@ else
 fi
 
 unset color_prompt force_color_prompt
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -94,7 +96,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias ghci='stack ghci'
     alias pbcopy='xsel --clipboard --input'
     alias open='xdg-open'
-
+    #alias exejar='java -jar main.jar'
+    alias exekt='kotlin main.jar -J-Xss256M'
 fi
 
 # colored GCC warnings and errors
@@ -136,10 +139,13 @@ fi
 ## defaultのディレクトリ作成時の権限変更
 umask 0002
 
+# tab complete
+#complete -F _kt_candidates ktcompile
+
 ## SDKMANのパス通し
-##THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-#export SDKMAN_DIR="/home/pokotsun/.sdkman"
-#[[ -s "/home/pokotsun/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pokotsun/.sdkman/bin/sdkman-init.sh"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # lutterのパス通し
 export PATH=/usr/local/flutter/bin:$PATH

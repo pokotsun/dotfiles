@@ -39,9 +39,9 @@ set history=5000 " 保存するコマンド履歴の数
 inoremap # X<C-H>#
 
 "カッコ入力時に補完
-inoremap {<Enter> {}<Left><CR><BS><ESC><S-o>
-inoremap [<Enter> []<Left><CR><BS><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><BS><ESC><S-o>
+inoremap {<CR> {}<Left><CR><BS><ESC><S-o>
+inoremap [<CR> []<Left><CR><BS><ESC><S-o>
+inoremap (<CR> ()<Left><CR><BS><ESC><S-o>
 
 " C++のときに初めてファイルを呼んだらテンプレートを読見込ませるようにする
 autocmd BufNewFile,BufRead *.cpp if getfsize(@%) <= 0 | 0read ~/.vim/templates/template.cpp | endif

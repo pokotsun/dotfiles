@@ -29,26 +29,31 @@ depends = ['neosnippet-snippets']
 
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
+
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
+
+# append operator command
+[[plugins]]
+repo = 'tpope/vim-surround'
 
 # bracket
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
 # open file from history
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-    noremap <Leader>ff :Denite -buffer-name=file file<CR> "list all files
-    noremap <Leader>fr :Denite file_mru<CR> " list files which used recently 
-    call denite#custom#map('insert', "<C-J>", '<denite:enter_mode:normal>', 'noremap')
-    call denite#custom#map('insert', "<C-O>", 'denite:input_command_line', 'noremap')
-'''
-depends = ['Shougo/neomru.vim']
+#[[plugins]]
+#repo = 'Shougo/denite.nvim'
+#hook_add = '''
+    #noremap <Leader>ff :Denite -buffer-name=file file<CR> "list all files
+    #noremap <Leader>fr :Denite file_mru<CR> " list files which used recently 
+    #call denite#custom#map('insert', "<C-J>", '<denite:enter_mode:normal>', 'noremap')
+    #call denite#custom#map('insert', "<C-O>", 'denite:input_command_line', 'noremap')
+#'''
+#depends = ['Shougo/neomru.vim']
 
-[[plugins]]
-repo = 'Shougo/neomru.vim'
+#[[plugins]]
+#repo = 'Shougo/neomru.vim'
 
 
 # Syntax Highlight
