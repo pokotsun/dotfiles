@@ -94,7 +94,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias vi='nvim'
     alias vim='nvim'
     alias ghci='stack ghci'
-    alias pbcopy='xsel --clipboard --input'
+	alias pbcopy='xclip -selection clipboard'
     alias open='xdg-open'
     #alias exejar='java -jar main.jar'
     alias exekt='kotlin main.jar -J-Xss256M'
@@ -104,7 +104,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -147,12 +147,12 @@ umask 0002
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-# lutterのパス通し
+# flutterのパス通し
 export PATH=/usr/local/flutter/bin:$PATH
 
 # Rustのインストール
 export PATH="$HOME/.cargo/bin:$PATH"
-#
+
 ## Trash-cli
 if type trash-put &> /dev/null
 then
@@ -162,6 +162,9 @@ fi
 # anyenv 
 export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
+
+# rbenv
+eval "$(rbenv init -)"
 
 # GoLangのPATH通し
 export GOENV_DISABLE_GOPATH=1
@@ -178,3 +181,5 @@ export LD_LIBRARY_PATH="$CUDA_PATH/lib64:$LD_LIBRARY_PATH"
 export CPATH="$CUDA_PATH/include"
 export LIBRARY_PATH="$CUDA_PATH/lib64:$LIBRARY_PATH"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

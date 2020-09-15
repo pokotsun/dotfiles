@@ -16,9 +16,12 @@ set smartindent " 改行時に前の行の構文をチェックし次の行の�
 set shiftwidth=4 " smartindentで増減する幅
 
 set autoread " when file is modified, reflesh content
+au FocusGained * :checktime
 
 set splitright "画面を縦分割する際に右に開く
 "set clipboard=unnamedplus "clipboard
+
+autocmd QuickFixCmdPost *grep* cwindow " on grep, default to Quick Fix
 
 " leader setting
 let mapleader = ","
@@ -51,6 +54,8 @@ noremap < <<
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap th :tabprevious<CR>
 nnoremap tl :tabnext<CR>
+nnoremap tH :-tabmove<CR>
+nnoremap tL :+tabmove<CR>
 " nnoremap th gT
 " nnoremap tl gt
 
@@ -76,6 +81,7 @@ xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
 
 " Executor for each kind programs    
+autocmd BufNewFile,BufRead *.c call SetCOptions()
 autocmd BufNewFile,BufRead *.cpp call SetCPPOptions()
 autocmd BufNewFile,BufRead *.rb call SetRubyOptions()     
 autocmd BufNewFile,BufRead *.py call SetPythonOptions()    
@@ -87,6 +93,10 @@ autocmd BufNewFile,BufRead *.kt call SetKotlinOptions()
 autocmd Filetype go call SetGoOptions()    
     
 " --------------OPTION FUNCTIONS-----------------"
+function SetCOptions()
+	nnoremap <C-e> :!gcc %
+endfunction
+
 function SetCPPOptions()
     nnoremap <C-e> :!g++ -std=c++14 %
 endfunction
@@ -174,6 +184,7 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+
 
 
 "色関係
