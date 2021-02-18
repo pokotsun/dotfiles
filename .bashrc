@@ -147,6 +147,8 @@ umask 0002
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # flutterのパス通し
 export PATH=/usr/local/flutter/bin:$PATH
 
@@ -173,6 +175,13 @@ export PATH="$GOPATH/bin:$PATH"
 
 # node brewのパス通し
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# pipenv venv folder
+export PIPENV_VENV_IN_PROJECT=true
+export PATH=".venv/bin:$PATH"
+
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # CUDA and cuDNN paths
 export CUDA_PATH="/usr/local/cuda"
