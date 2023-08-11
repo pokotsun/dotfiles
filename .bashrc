@@ -81,8 +81,9 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    # test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias exa='ls'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -142,11 +143,6 @@ umask 0002
 # tab complete
 #complete -F _kt_candidates ktcompile
 
-## SDKMANのパス通し
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
 export PATH="$HOME/.local/bin:$PATH"
 
 # flutterのパス通し
@@ -161,20 +157,17 @@ then
     alias rm=trash-put
 fi
 
-# anyenv 
-export PATH="$HOME/.anyenv/bin:$PATH"
-eval "$(anyenv init -)"
+. $HOME/.asdf/asdf.sh
 
-# rbenv
-eval "$(rbenv init -)"
+# # GoLangのPATH通し
+# export GOENV_DISABLE_GOPATH=1
+# export GOPATH="$HOME/workplace/golang"
+# export PATH="$GOPATH/bin:$PATH"
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$GOPATH/bin
 
-# GoLangのPATH通し
-export GOENV_DISABLE_GOPATH=1
-export GOPATH="$HOME/workplace/golang"
-export PATH="$GOPATH/bin:$PATH"
-
-# node brewのパス通し
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# direnv
+eval "$(direnv hook bash)"
 
 # pipenv venv folder
 export PIPENV_VENV_IN_PROJECT=true
@@ -192,3 +185,6 @@ export LIBRARY_PATH="$CUDA_PATH/lib64:$LIBRARY_PATH"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+xinput set-button-map "TPPS/2 Elan TrackPoint" 1 0 3 4 5 6 7
