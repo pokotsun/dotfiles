@@ -1,5 +1,5 @@
 " encoding 
-let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/versions/3.6.8/bin/python')
+let g:python3_host_prog = expand('~/.asdf/shims/python')
 set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " char-code on saving file 
