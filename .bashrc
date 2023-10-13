@@ -81,9 +81,9 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    # test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias exa='ls'
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    # alias ls='ls --color=auto'
+    alias ls='exa'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -152,10 +152,10 @@ export PATH=/usr/local/flutter/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
 ## Trash-cli
-if type trash-put &> /dev/null
-then
-    alias rm=trash-put
-fi
+# if type trash-put &> /dev/null
+# then
+#     alias rm=trash-put
+# fi
 
 . $HOME/.asdf/asdf.sh
 
@@ -188,3 +188,5 @@ export LIBRARY_PATH="$CUDA_PATH/lib64:$LIBRARY_PATH"
 
 
 xinput set-button-map "TPPS/2 Elan TrackPoint" 1 0 3 4 5 6 7
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
