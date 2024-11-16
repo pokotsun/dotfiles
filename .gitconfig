@@ -18,9 +18,9 @@
 [url "https://github.com/rust-lang/crates.io-index"]
 	InsteadOf = https://github.com/rust-lang/crates.io-index
 
-# [url "github:"]
-#     InsteadOf = https://github.com
-#     InsteadOf = git@github.com
+[url "github:"]
+    InsteadOf = https://github.com
+    InsteadOf = git@github.com
 [fetch]
 	prune = true
 [rebase]
