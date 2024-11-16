@@ -161,8 +161,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # # GoLangのPATH通し
 # export GOENV_DISABLE_GOPATH=1
-# export GOPATH="$HOME/workplace/golang"
-# export PATH="$GOPATH/bin:$PATH"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 
@@ -185,8 +183,9 @@ export LIBRARY_PATH="$CUDA_PATH/lib64:$LIBRARY_PATH"
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. /usr/share/doc/fzf/examples/key-bindings.bash
 
-
-xinput set-button-map "TPPS/2 Elan TrackPoint" 1 0 3 4 5 6 7
+# xinput set-button-map "TPPS/2 Elan TrackPoint" 1 0 3 4 5 6 7
+. "$HOME/.cargo/env"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

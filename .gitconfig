@@ -10,13 +10,17 @@
     co = checkout
     cm = commit
     br = branch
+    misogi = commit --amend --no-edit
+    resethard = reset --hard head
+    push-force = push -f origin head
+    delete-merged-branch = "!f() { git checkout $1; git branch --merged|grep -V '*|develop|main'|xargs git branch -d; };f"
 
 [url "https://github.com/rust-lang/crates.io-index"]
 	InsteadOf = https://github.com/rust-lang/crates.io-index
 
-[url "github:"]
-    InsteadOf = https://github.com
-    InsteadOf = git@github.com
+# [url "github:"]
+#     InsteadOf = https://github.com
+#     InsteadOf = git@github.com
 [fetch]
 	prune = true
 [rebase]
@@ -35,8 +39,6 @@
     navigate = true
     line-numbers = true
     side-by-side = true
-    syntax-theme = Monokai Extended
 
 [interactive]
     diffFilter = delta --color-only
-
